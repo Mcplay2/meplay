@@ -4,33 +4,41 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         <!-- Primary Meta Tags -->
-        <title>YourServer</title>
-        <meta name="title" content="YourServer" />
+        <title>LAVAMC</title>
+        <meta name="title" content="LAVAMC" />
         <meta
             name="description"
-            content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquam sem fringilla ut morbi. Urna duis convallis convallis tellus id interdum velit."
+            content="Join LAVAMC — the ultimate Minecraft experience. Build, explore, and connect with other players in our fun and friendly community!"
         />
+        <meta name="keywords" content="Minecraft, LAVAMC, Survival, Multiplayer, Server, Gaming, MC Server, SMP" />
+        <meta name="author" content="LAVAMC Team" />
+        <meta name="theme-color" content="#ffad32" />
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://yourserver.com/" />
-        <meta property="og:title" content="YourServer" />
+        <meta property="og:url" content="https://lavamc.net/" />
+        <meta property="og:title" content="LAVAMC" />
         <meta
             property="og:description"
-            content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquam sem fringilla ut morbi. Urna duis convallis convallis tellus id interdum velit."
+            content="Join LAVAMC — the ultimate Minecraft experience. Build, explore, and connect with other players in our fun and friendly community!"
         />
+        <meta property="og:image" content="images/banner.png" />
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://yourserver.com/" />
-        <meta property="twitter:title" content="YourServer" />
+        <meta property="twitter:url" content="https://lavamc.net/" />
+        <meta property="twitter:title" content="LAVAMC" />
         <meta
             property="twitter:description"
-            content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquam sem fringilla ut morbi. Urna duis convallis convallis tellus id interdum velit."
+            content="Join LAVAMC — the ultimate Minecraft experience. Build, explore, and connect with other players in our fun and friendly community!"
         />
-        <meta name="theme-color" content="#ffad32" />
+        <meta property="twitter:image" content="images/banner.png" />
+
+        <!-- Fonts & CSS -->
         <link rel="stylesheet" href="style.css" />
+        <link rel="icon" href="images/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -42,56 +50,65 @@
         <main>
             <section class="hero">
                 <h1>
-                    <span class="sr-only">YourServer</span
-                    ><img
+                    <span class="sr-only">LAVAMC</span>
+                    <img
                         src="images/logo.png"
-                        alt="yourserver logo"
+                        alt="LAVAMC logo"
                         class="logo_pulse"
                     />
                 </h1>
             </section>
+
             <section class="container">
-                <button onclick="copyToClipboard()" class="online-players">
+                <button onclick="copyToClipboard()" class="online-players" aria-label="Copy server IP to clipboard">
                     Join another
                     <strong><span id="player-count">14</span></strong> players
                     playing!
                 </button>
             </section>
+
             <section class="vote-links container">
-                <a href="" target="_blank">
+                <a href="https://discord.gg/yourdiscord" target="_blank" aria-label="Join our Discord">
                     <img
                         src="images/icons/discord.svg"
-                        alt=""
+                        alt="Discord icon"
                         class="icon"
-                    />Discord</a
-                >
-                <a href="" target="_blank">
-                    <img src="images/icons/vote.svg" alt="" class="icon" />
-                    Vote</a
-                >
-                <a href="" target="_blank"
-                    ><img
+                    />
+                    Discord
+                </a>
+                <a href="https://voting-site.com/lavamc" target="_blank" aria-label="Vote for LAVAMC">
+                    <img
+                        src="images/icons/vote.svg"
+                        alt="Vote icon"
+                        class="icon"
+                    />
+                    Vote
+                </a>
+                <a href="https://store.lavamc.net" target="_blank" aria-label="Visit our store">
+                    <img
                         src="images/icons/store.svg"
-                        alt=""
+                        alt="Store icon"
                         class="icon"
-                    />Store</a
-                >
+                    />
+                    Store
+                </a>
             </section>
         </main>
+
         <footer>
             <div class="container">
                 <div class="footer-info">
                     <p>
-                        &copy; 2023 YourServer. All rights reserved. <br />
-                        <a href="">Privacy Policy</a> |
-                        <a href="">Terms of Service</a>
+                        &copy; 2025 LAVAMC. All rights reserved. <br />
+                        <a href="/privacy-policy.html">Privacy Policy</a> |
+                        <a href="/terms.html">Terms of Service</a>
                     </p>
                 </div>
             </div>
         </footer>
+
         <script>
-            // Replace 'your-server-ip' with the actual IP or server address
-            const serverIP = "hypixel.net";
+            const serverIP = "play.lavamc.net";
 
             function copyToClipboard() {
                 const textarea = document.createElement("textarea");
@@ -100,16 +117,15 @@
                 textarea.select();
                 document.execCommand("copy");
                 document.body.removeChild(textarea);
+                alert("Server IP copied to clipboard: " + serverIP);
             }
 
-            // Function to update the player count
             function updatePlayerCount() {
                 fetch(`https://api.mcsrvstat.us/2/${serverIP}`)
                     .then((response) => response.json())
                     .then((data) => {
-                        const playerCount = data.players.online;
-                        document.getElementById("player-count").textContent =
-                            playerCount;
+                        const playerCount = data.players ? data.players.online : "0";
+                        document.getElementById("player-count").textContent = playerCount;
                     })
                     .catch((error) => {
                         console.error("Error fetching player count:", error);
